@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { ArrowRight, BarChart3, Brain, Zap, ChevronDown } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
 
 const Hero = () => {
+  const navigate = useNavigate()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -65,6 +67,7 @@ const Hero = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
         >
           <motion.button
+            onClick={() => navigate('/login')}
             className="px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 rounded-full text-white font-semibold flex items-center gap-2 hover:shadow-2xl hover:shadow-primary-500/50 transition-all group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -73,6 +76,10 @@ const Hero = () => {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.button>
           <motion.button
+            onClick={() => {
+              const contactSection = document.querySelector('#contact')
+              contactSection?.scrollIntoView({ behavior: 'smooth' })
+            }}
             className="px-8 py-4 glass-effect rounded-full text-gray-300 font-semibold hover:border-primary-400 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

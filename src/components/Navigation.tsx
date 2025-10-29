@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, TrendingUp } from 'lucide-react'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,11 +61,12 @@ const Navigation = () => {
               </motion.a>
             ))}
             <motion.button
+              onClick={() => navigate('/login')}
               className="px-6 py-2 bg-gradient-to-r from-primary-600 to-accent-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Started
+              Client Login
             </motion.button>
           </div>
 
@@ -100,12 +103,13 @@ const Navigation = () => {
                   </motion.a>
                 ))}
                 <motion.button
+                  onClick={() => navigate('/login')}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navItems.length * 0.1 }}
                   className="px-6 py-2 bg-gradient-to-r from-primary-600 to-accent-600 rounded-full text-white font-semibold mx-4"
                 >
-                  Get Started
+                  Client Login
                 </motion.button>
               </div>
             </motion.div>
